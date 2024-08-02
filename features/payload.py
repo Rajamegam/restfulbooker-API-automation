@@ -1,14 +1,14 @@
-def createbookingpayload():
+def createbookingpayload(firstname, lastname, totalprice, depositpaid, checkin, checkout, additionalneeds):
     body = {
-        "firstname": "Rajamegam",
-        "lastname": "Brown",
-        "totalprice": 111,
-        "depositpaid": True,
+        "firstname": firstname,
+        "lastname": lastname,
+        "totalprice": totalprice,
+        "depositpaid": depositpaid,
         "bookingdates": {
-            "checkin": "2018-01-01",
-            "checkout": "2019-01-01"
+            "checkin": checkin,
+            "checkout": checkout
         },
-        "additionalneeds": ""
+        "additionalneeds": additionalneeds
     }
 
     return body
@@ -30,7 +30,7 @@ def updatebookingpayload():
     return body1
 
 
-def authpayload(username,password):
+def authpayload(username, password):
     body = {
         "username": username,
         "password": password
@@ -38,8 +38,9 @@ def authpayload(username,password):
 
     return body
 
+
 def headers():
-    headers={
+    headers = {
         "content-Type": "application/json"
     }
     return headers

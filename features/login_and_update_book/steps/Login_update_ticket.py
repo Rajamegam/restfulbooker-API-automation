@@ -6,7 +6,7 @@ import requests
 
 @Given('The username and password of the user')
 def stepimpl(context):
-    # raise NotImplementedError('Not implemented')
+
     context.auth_endpoint = getconfig()['API']['endpoint'] + "/auth"
     # following for loop is to get the username and password from the "login.feature" file
     for row in context.table:
@@ -16,14 +16,13 @@ def stepimpl(context):
 
 @when('We execute login API')
 def step_impl(context):
-    # raise NotImplementedError('Not implemented')
+
     context.auth_response = requests.post(url=context.auth_endpoint, json=payload.authpayload(context.username,context.password),
                                           headers=payload.headers())
 
 
 @Then('logged in successfully')
 def step_impl(context):
-    # raise NotImplementedError('Not implemented')
     auth_response_json = context.auth_response.json()
     assert context.auth_response.status_code == 200
     print(auth_response_json)
