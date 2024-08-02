@@ -1,6 +1,6 @@
 from behave import *
 from Utilities.configurations import *
-import payload
+from features import payload
 import requests
 
 
@@ -8,12 +8,16 @@ import requests
 def stepimpl(context):
     # raise NotImplementedError('Not implemented')
     context.auth_endpoint = getconfig()['API']['endpoint'] + "/auth"
+    # following for loop is to get the username and password from the "login.feature" file
+    for row in context.table:
+        context.username = row['username']
+        context.password = row['password']
 
 
 @when('We execute login API')
 def step_impl(context):
     # raise NotImplementedError('Not implemented')
-    context.auth_response = requests.post(url=context.auth_endpoint, json=payload.authpayload(),
+    context.auth_response = requests.post(url=context.auth_endpoint, json=payload.authpayload(context.username,context.password),
                                           headers=payload.headers())
 
 
@@ -24,7 +28,7 @@ def step_impl(context):
     assert context.auth_response.status_code == 200
     print(auth_response_json)
     context.token_value = auth_response_json['token']
-    context.config.userdata['token_value']=context.token_value
+    context.config.userdata['token_value'] = context.token_value
 
 
 @Given('Authenticate the user')
