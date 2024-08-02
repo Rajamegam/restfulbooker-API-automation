@@ -1,5 +1,5 @@
 import requests
-import payload
+from features import payload
 from Utilities.configurations import *
 
 auth_endpoint = getconfig()['API']['endpoint'] + "/auth"

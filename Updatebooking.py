@@ -1,7 +1,6 @@
 import requests
 from Utilities.configurations import *
-from Utilities.resource import *
-from payload import *
+from features.payload import *
 id=953
 update_booking_URL = getconfig()['API']['endpoint'] +f"/booking/{id}"
 

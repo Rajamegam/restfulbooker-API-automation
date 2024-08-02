@@ -30,10 +30,10 @@ def updatebookingpayload():
     return body1
 
 
-def authpayload():
+def authpayload(username,password):
     body = {
-        "username": "admin",
-        "password": "password123"
+        "username": username,
+        "password": password
     }
 
     return body
