@@ -6,7 +6,7 @@ from behave import *
 
 @Given('When the create API is hit with payload')
 def stepimp(context):
-    context.create_endpoint = getconfig()['API']['endpoint'] + "booking"
+    context.create_endpoint = getconfig()['API']['endpoint'] + "/booking"
 
     for row in context.table:
         context.firstname = row['firstname']
@@ -31,6 +31,7 @@ def stepimp(context):
 
 @then('check for the response whether it is 200 or not and print the details')
 def stepimp(context):
-    auth_response_json = context.auth_response.json()
-    assert context.auth_response.status_code == 200
-    print(auth_response_json)
+    context.create_response = context.response_json.json()
+    # assert context.create_response == 200
+    assert context.response_json.status_code == 200
+    print(context.create_response)
