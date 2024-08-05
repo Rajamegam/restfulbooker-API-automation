@@ -2,7 +2,7 @@ def createbookingpayload(firstname, lastname, totalprice, depositpaid, checkin, 
     body = {
         "firstname": firstname,
         "lastname": lastname,
-        "totalprice": totalprice,
+        #"totalprice": totalprice,
         "depositpaid": depositpaid,
         "bookingdates": {
             "checkin": checkin,
@@ -10,7 +10,8 @@ def createbookingpayload(firstname, lastname, totalprice, depositpaid, checkin, 
         },
         "additionalneeds": additionalneeds
     }
-
+    if totalprice is not None:
+        body["totalprice"]=totalprice
     return body
 
 
