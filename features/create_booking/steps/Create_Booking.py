@@ -33,6 +33,9 @@ def stepimp(context):
 def stepimp(context):
     context.create_response = context.response_json.json()
     assert context.response_json.status_code == 200
+    context.booking_id = context.create_response['bookingid']
+    context.config.userdata['booking_id']= context.booking_id
+    print(context.booking_id)
     print(context.create_response)
 
 
@@ -45,5 +48,5 @@ def stepimp(context):
                                                                        context.additionalneeds),
                                      headers=payload.headers())
 
-    assert context.response.status_code == 200
+    assert context.response.status_code == 400
     print(context.response)

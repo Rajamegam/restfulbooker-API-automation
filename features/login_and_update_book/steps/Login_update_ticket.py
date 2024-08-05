@@ -33,7 +33,7 @@ def step_impl(context):
 @Given('Authenticate the user')
 def step_impl(context):
     token_value = context.config.userdata.get('token_value', None)
-    id = 953
+    #id = 953
     context.update_booking_URL = getconfig()['API']['endpoint'] + f"/booking/{id}"
     context.headers = {"Content-Type": "application/json", "cookie": f"token={token_value}"}
     print(context.headers)
